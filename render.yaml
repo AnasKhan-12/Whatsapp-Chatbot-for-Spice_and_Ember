@@ -13,7 +13,3 @@ services:
         sync: false
       - key: TWILIO_WHATSAPP_NUMBER
         sync: false
-    disk:
-      name: chroma-storage
-      mountPath: /data/chroma_db
-      sizeGB: 1
