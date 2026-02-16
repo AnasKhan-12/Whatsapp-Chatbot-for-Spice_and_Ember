@@ -65,36 +65,23 @@ def _load_page1(page) -> list[dict]:
     docs = []
     text = page.extract_text() or ""
 
-<<<<<<< HEAD
-=======
     # ── Extract "About" section (plain text paragraphs) ──
->>>>>>> 8ddd03b912c09c9e76794550857d4824eafd05ae
     about_match = re.search(
         r"Section 1 — About the Restaurant.*?\n(.+?)(?=Section 2)",
         text, re.DOTALL
     )
     if about_match:
         about_text = about_match.group(1).strip()
-<<<<<<< HEAD
 
-        # BEFORE: splitting on \n broke mid-sentence
-        # AFTER: join all lines into one string first
-        # then split on ". " to get complete sentences
+        # Join all lines into one string first to avoid mid-sentence breaks
         one_string = " ".join(about_text.split("\n"))
 
-        # Now split into real sentences using ". " as boundary
-        # This keeps each sentence complete and meaningful
+        # Split on ". " to get complete sentences
         sentences = [s.strip() + "." for s in one_string.split(". ") if len(s.strip()) > 30]
 
         for i, sentence in enumerate(sentences):
             docs.append({
                 "page_content": sentence,
-=======
-        paragraphs = [p.strip() for p in about_text.split("\n") if len(p.strip()) > 60]
-        for i, para in enumerate(paragraphs):
-            docs.append({
-                "page_content": para,
->>>>>>> 8ddd03b912c09c9e76794550857d4824eafd05ae
                 "metadata": {
                     "source": "pdf",
                     "page": 1,
@@ -110,7 +97,7 @@ def _load_page1(page) -> list[dict]:
     if tables:
         kv_table = tables[0]
         kv_lines = []
-        for row in kv_table[1:]:   # skip header row ['Field', 'Value']
+        for row in kv_table[1:]:
             if row[0] and row[1]:
                 kv_lines.append(f"{row[0].strip()}: {row[1].strip()}")
 
@@ -473,13 +460,10 @@ def _load_hours_sheet(ws) -> list[dict]:
 # ══════════════════════════════════════════════════════════════
 
 def load_all_documents(
-<<<<<<< HEAD
-    pdf_path: str = "./spice_and_ember_data.pdf",
-    excel_path: str = "./spice_and_ember_menu.xlsx"
-=======
+
     pdf_path: str = "spice_and_ember_data.pdf",
     excel_path: str = "spice_and_ember_menu.xlsx"
->>>>>>> 8ddd03b912c09c9e76794550857d4824eafd05ae
+
 ) -> list[dict]:
     all_docs = []
     all_docs += load_pdf(pdf_path)
