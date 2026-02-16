@@ -24,6 +24,7 @@ import os
 import google.generativeai as genai
 from dotenv import load_dotenv
 from retriever import smart_retrieve, format_context
+CHROMA_DIR = "/data/chroma_db" if os.path.exists("/data") else "./chroma_db"
 
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -121,7 +122,7 @@ def call_llm(messages: list[dict]) -> str:
     return response.text.strip()
 
 # ── FULL RAG CHAIN ──────────────────────────────────────────────────────────────
-def rag_chat(user_message, conversation_history, persist_dir="./chroma_db"):
+def rag_chat(user_message, conversation_history, persist_dir=CHROMA_DIR):
     # Retrieval stays simple — just the user message
     results = smart_retrieve(user_message, k=4, persist_dir=persist_dir)
     context = format_context(results)

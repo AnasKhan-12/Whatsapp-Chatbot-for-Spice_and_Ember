@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: spice-ember-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python 06_whatsapp_bot.py
+    envVars:
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_WHATSAPP_NUMBER
+        sync: false
+    disk:
+      name: chroma-storage
+      mountPath: /data/chroma_db
+      sizeGB: 1

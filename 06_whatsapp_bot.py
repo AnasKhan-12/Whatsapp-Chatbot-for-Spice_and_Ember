@@ -33,7 +33,7 @@ DEPLOY TO PRODUCTION:
   3. Set environment variables (OPENAI_API_KEY, TWILIO_*)
   4. Update Twilio webhook URL to your Railway URL
 """
-
+import startup
 import os
 from fastapi import FastAPI, Form, Response
 from twilio.rest import Client

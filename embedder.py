@@ -30,7 +30,7 @@ from chromadb.utils import embedding_functions
 # CORRECT
 import google.generativeai as genai
 from dotenv import load_dotenv
-
+CHROMA_DIR = "/data/chroma_db" if os.path.exists("/data") else "./chroma_db"
 load_dotenv()  # loads OPENAI_API_KEY from .env file
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -40,7 +40,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 #   - In-memory (lost on restart)  → for testing
 #   - Persistent (saved to disk)   → for production ✅
 
-def get_vector_store(persist_dir: str = "./chroma_db"):
+def get_vector_store(persist_dir: str = CHROMA_DIR):
     # No embedding function passed here at all
     # We will embed manually and pass raw vectors ourselves
     client = chromadb.PersistentClient(path=persist_dir)
