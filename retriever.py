@@ -19,7 +19,7 @@ import os
 import chromadb
 import google.generativeai as genai
 from dotenv import load_dotenv
-CHROMA_DIR = "/data/chroma_db" if os.path.exists("/data") else "./chroma_db"
+
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
@@ -36,7 +36,7 @@ def embed_query(text: str) -> list[float]:
     )
     return result["embedding"]
 
-def get_collection(persist_dir: str = CHROMA_DIR):
+def get_collection(persist_dir: str = "./chroma_db"):
     client = chromadb.PersistentClient(path=persist_dir)
     # No embedding function — we embed manually just like in embedder.py
     return client.get_collection(name="spice_and_ember")
