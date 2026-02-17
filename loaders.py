@@ -1,32 +1,3 @@
-"""
-01_loaders.py — Load & Parse Data from PDF + Excel ONLY
-
-REAL-WORLD SCENARIO:
-  Your client sends you TWO files:
-    - spice_and_ember_data.pdf   (5 pages, mixed formats)
-    - spice_and_ember_menu.xlsx  (3 sheets, tabular data)
-
-  Your job: extract EVERYTHING from these two files
-  and turn each piece into a clean document with metadata.
-
-PDF STRUCTURE (verified by inspection):
-  Page 1 → About text (plain) + Key-Value table (contact/ops)
-  Page 2 → Key-Value continued + Opening Hours table
-  Page 3 → Full Menu table + FAQ (Q&A text)
-  Page 4 → Chef's Notes (unstructured) + Nutrition header
-  Page 5 → Nutrition inline data (pipe-separated text)
-
-EXCEL STRUCTURE (verified by inspection):
-  Sheet "Menu"           → 14 items, 10 columns
-  Sheet "Nutrition"      → 12 items, 9 columns
-  Sheet "Hours&Booking"  → 7 days, 5 columns
-
-KEY LESSON:
-  Before writing ANY loader, always inspect your files first.
-  Never assume structure — always verify with code.
-  (That's exactly what we did above with the inspection scripts.)
-"""
-
 import re
 import pdfplumber
 import openpyxl
