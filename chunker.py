@@ -21,11 +21,6 @@ CHUNK SIZE GUIDE (in tokens):
 import tiktoken
 from dataclasses import dataclass
 
-
-# ── TOKEN COUNTER ──────────────────────────────────────────────────────────────
-# OpenAI charges per TOKEN, not character. Always measure chunk size in tokens.
-# cl100k_base is the tokenizer used by text-embedding-3-small and GPT-4.
-
 encoder = tiktoken.get_encoding("cl100k_base")
 
 def count_tokens(text: str) -> int:
