@@ -5,6 +5,8 @@
 
 ---
 
+<img width="890" height="721" alt="Screenshot 2026-02-18 005548" src="https://github.com/user-attachments/assets/3f67a202-4b4c-4478-8258-b47d3ca5e71c" />
+
 ## 📸 Demo
 
 | Customer Query | Bot Response |
