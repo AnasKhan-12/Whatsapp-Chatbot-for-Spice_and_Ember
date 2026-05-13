@@ -1,6 +1,6 @@
 # 🔥 Spice & Ember — RAG-Powered WhatsApp Chatbot
 
-> A production-grade AI chatbot for a restaurant, built with Retrieval-Augmented Generation (RAG).
+> A AI chatbot for a restaurant, built with Retrieval-Augmented Generation (RAG) from scratch not using LangChain.
 > Answers customer questions about the menu, hours, dietary needs, and takes orders — all on WhatsApp.
 
 ---
